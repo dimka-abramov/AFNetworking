@@ -149,13 +149,14 @@ if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_9_0) {
     bzero(&address, sizeof(address));
     address.sin6_len = sizeof(address);
     address.sin6_family = AF_INET6;
+    return [self managerForAddress:&address];
 } else {
     struct sockaddr_in address;
     bzero(&address, sizeof(address));
     address.sin_len = sizeof(address);
     address.sin_family = AF_INET;
-}
     return [self managerForAddress:&address];
+}
 }
 
 - (instancetype)initWithReachability:(SCNetworkReachabilityRef)reachability {
